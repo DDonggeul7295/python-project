@@ -1,0 +1,138 @@
+import random
+import turtle
+while True:
+    while True:
+        victory = turtle.textinput("거북이경주게임", "파랑 or 빨강")
+        if victory == "파랑" or victory == "빨강":
+            break
+    
+    turtle.bgcolor("black")
+    
+    
+    t1 = turtle.Turtle()
+    t2 = turtle.Turtle()
+    t3 = turtle.Turtle()
+    
+    t1.shape("turtle")
+    t1.color("blue")
+    t2.shape("turtle")
+    t2.color("red")
+
+    t3.hideturtle()
+    
+    
+    font_a = ("휴먼매직체", 30)
+    font_b = ("굴림", 30)
+    font_c = ("굴림", 50)
+    
+
+    t3.up()
+    t3.pencolor("pink")
+    
+    
+    t3.goto(-150,270)
+    
+    t3.down()
+    t3.write("거북이 경주 게임", font = font_a)
+    
+    t3.right(90)
+
+    for i in range(3):
+        t3.up()
+        t3.goto(100 + i*100, 250)
+        t3.down()
+        for a in range(3):
+            t3.pencolor("white")
+            t3.fd(30)
+            t3.pencolor("black")
+            t3.fd(3)
+        t3.fd(5)
+        t3.pencolor("white")
+        t3.write((i+1)*100)
+        t3.write("      M")
+    
+    for i in range(3):
+        t3.up()
+        t3.goto(100 + i*100, -150)
+        t3.down()
+        for a in range(3):
+            t3.pencolor("white")
+            t3.fd(30)
+            t3.pencolor("black")
+            t3.fd(3)
+        t3.fd(5)
+        t3.pencolor("white")
+        t3.write((i+1)*100)
+        t3.write("      M")
+    
+    
+    
+    
+    t3.up()
+    t3.goto(-150,0)
+    t3.down()
+    
+    t1.up()
+    t1.goto(0, 200)
+    t1.down()
+    
+    t2.up()
+    t2.goto(0, -200)
+    t2.down()
+    
+    sum_t1fd = 0
+    sum_t2fd = 0
+
+
+    while True:
+        t1_randfd = random.randint(1, 10)
+        t2_randfd = random.randint(1, 10)
+        sum_t1fd = sum_t1fd + t1_randfd
+        sum_t2fd = sum_t2fd + t2_randfd
+        print("t1 :",sum_t1fd, "t2 :",sum_t2fd)
+        t1.fd(t1_randfd)
+        t2.fd(t2_randfd)
+        
+        if sum_t1fd >= 300 or sum_t2fd >= 300:
+            if sum_t1fd > sum_t2fd:
+                print("파란색거북이가 이겼습니다")
+                t1.write("승리", font = font_b)
+                if victory == "파랑":
+                    print("예측 성공")
+                    t3.write("예측 성공", font = font_c)
+                else:
+                    print("예측 실패")
+                    t3.write("예측 실패", font = font_c)
+                break
+            elif sum_t2fd > sum_t1fd:
+                print("빨간색거북이가 이겼습니다")
+                t2.write("승리", font = font_b)
+                if victory == "빨강":
+                    print("예측 성공")
+                    t3.write("예측 성공", font = font_c)
+                else:
+                    print("예측 실패")
+                    t3.write("예측 실패", font = font_c)
+                break
+            else:
+                print("파란색거북이가 이겼습니다")
+                t1.write("승리", font = font_b)
+                if victory == "파랑":
+                    print("예측 성공")
+                    t3.write("예측 성공", font = font_c)
+                else:
+                    print("예측 실패")
+                    t3.write("예측 실패", font = font_c)
+                break
+    while True:
+        Continue = turtle.textinput("종료하시겠습니까?", "Y / N")
+        if Continue == "Y" or Continue == "N":
+            break
+    if Continue == "Y":
+        turtle.bye()
+        break
+    elif Continue == "N":
+        turtle.resetscreen()
+
+
+    
